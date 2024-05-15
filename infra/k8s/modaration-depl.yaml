@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: modaration-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: modaration
+  template:
+    metadata:
+      labels:
+        app: modaration
+    spec:
+      containers:
+        - name: modaration
+          image: raindropplus/event-bus
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: modaration-srv
+spec:
+  selector:
+    app: modaration
+  ports:
+    - name: modaration
+      protocol: TCP
+      port: 4002
+      targetPort: 4003
