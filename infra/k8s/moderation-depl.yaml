@@ -1,30 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: modaration-depl
+  name: moderation-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: modaration
+      app: moderation
   template:
     metadata:
       labels:
-        app: modaration
+        app: moderation
     spec:
       containers:
-        - name: modaration
-          image: raindropplus/event-bus
+        - name: moderation
+          image: raindropplus/moderation
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: modaration-srv
+  name: moderation-srv
 spec:
   selector:
-    app: modaration
+    app: moderation
   ports:
-    - name: modaration
+    - name: moderation
       protocol: TCP
-      port: 4002
+      port: 4003
       targetPort: 4003

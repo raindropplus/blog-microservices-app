@@ -11,9 +11,9 @@ const posts = {};
 
 const handleEvent = (type, data) => {
   if (type === "PostCreated") {
-    const { id, tittle } = data;
+    const { id, title } = data;
 
-    posts[id] = { id, tittle, comments: [] };
+    posts[id] = { id, title, comments: [] };
   }
 
   if (type === "CommentCreated") {
